@@ -5,10 +5,10 @@ Frontend publik untuk menyusun profil minat investasi Kota Serang sebagai perjal
 ## Arsitektur
 
 - **GitHub** adalah source of truth dan tempat seluruh perubahan aplikasi dikelola.
-- **Firebase Hosting** menyajikan frontend publik di `https://misiberbudi.web.app/`.
-- Setiap perubahan pada branch `main` otomatis dideploy ke Firebase Hosting melalui GitHub Actions.
+- **Cloudflare Pages** menyajikan frontend publik dan otomatis mendeploy setiap perubahan pada branch `main` melalui Git integration.
 - **Google Apps Script** tetap menjadi backend untuk validasi server, pencatatan Google Sheets, scoring internal, notifikasi, dan dashboard petugas.
 - Tidak ada Firebase SDK, Firestore, database, atau secret admin di frontend.
+- Pengelolaan harian tidak memerlukan VS Code atau terminal; perubahan cukup dilakukan pada repository GitHub.
 
 ## Pengalaman pengguna
 
@@ -42,9 +42,6 @@ Versi migrasi memperbaiki pengalaman submit dengan:
 
 ```text
 misiberbudi/
-├── .github/workflows/firebase-hosting-live.yml
-├── .firebaserc
-├── firebase.json
 ├── index.html
 ├── styles.css
 ├── app.js
@@ -55,23 +52,17 @@ misiberbudi/
     └── FirebaseBridge.gs
 ```
 
-## Deploy Firebase Hosting
+## Deploy Cloudflare Pages
 
-Project Firebase: `misiberbudi`
+Gunakan Git integration langsung dari Cloudflare Dashboard:
 
-URL publik: `https://misiberbudi.web.app/`
+- Repository: `nrwtkd/misiberbudi`
+- Production branch: `main`
+- Framework preset: None
+- Build command: kosong
+- Build output directory: `.`
 
-Workflow `firebase-hosting-live.yml` otomatis mendeploy branch `main` ke channel `live`. GitHub repository harus memiliki Actions secret bernama:
-
-`FIREBASE_SERVICE_ACCOUNT`
-
-Secret tersebut berisi service-account JSON untuk Firebase Hosting. Cara paling sederhana untuk membuat dan memasangnya adalah menjalankan satu kali dari project lokal yang sudah login ke Firebase:
-
-```bash
-firebase init hosting:github
-```
-
-Setelah credential GitHub ↔ Firebase tersambung, pengelolaan harian tidak perlu dilakukan dari VS Code: perubahan cukup dilakukan di repository dan push ke `main` akan otomatis tayang di Firebase.
+Cloudflare Pages akan otomatis deploy ulang setiap ada commit baru di `main`. Nama project disarankan `misiberbudi`, sehingga URL default menjadi `https://misiberbudi.pages.dev/` bila nama tersebut tersedia.
 
 ## Hubungkan Apps Script
 
@@ -79,7 +70,7 @@ Setelah credential GitHub ↔ Firebase tersambung, pengelolaan harian tidak perl
 2. Salin/selaraskan `apps-script/FirebaseBridge.gs` ke project tersebut.
 3. Deploy sebagai **Web app** dan gunakan URL deployment yang berakhiran `/exec`.
 4. Masukkan URL tersebut ke `config.js` pada `appsScriptUrl`.
-5. Origin Firebase `https://misiberbudi.web.app` sudah diizinkan pada bridge.
+5. Origin Cloudflare `https://misiberbudi.pages.dev` sudah disiapkan pada bridge.
 
 ## Prinsip tata kelola
 
