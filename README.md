@@ -4,8 +4,9 @@ Frontend publik untuk menyusun profil minat investasi Kota Serang sebagai perjal
 
 ## Arsitektur
 
-- **GitHub** adalah source of truth.
-- **GitHub Pages** menyajikan frontend publik statis.
+- **GitHub** adalah source of truth dan tempat seluruh perubahan aplikasi dikelola.
+- **Firebase Hosting** menyajikan frontend publik di `https://misiberbudi.web.app/`.
+- Setiap perubahan pada branch `main` otomatis dideploy ke Firebase Hosting melalui GitHub Actions.
 - **Google Apps Script** tetap menjadi backend untuk validasi server, pencatatan Google Sheets, scoring internal, notifikasi, dan dashboard petugas.
 - Tidak ada Firebase SDK, Firestore, database, atau secret admin di frontend.
 
@@ -41,6 +42,9 @@ Versi migrasi memperbaiki pengalaman submit dengan:
 
 ```text
 misiberbudi/
+├── .github/workflows/firebase-hosting-live.yml
+├── .firebaserc
+├── firebase.json
 ├── index.html
 ├── styles.css
 ├── app.js
@@ -51,21 +55,31 @@ misiberbudi/
     └── FirebaseBridge.gs
 ```
 
+## Deploy Firebase Hosting
+
+Project Firebase: `misiberbudi`
+
+URL publik: `https://misiberbudi.web.app/`
+
+Workflow `firebase-hosting-live.yml` otomatis mendeploy branch `main` ke channel `live`. GitHub repository harus memiliki Actions secret bernama:
+
+`FIREBASE_SERVICE_ACCOUNT`
+
+Secret tersebut berisi service-account JSON untuk Firebase Hosting. Cara paling sederhana untuk membuat dan memasangnya adalah menjalankan satu kali dari project lokal yang sudah login ke Firebase:
+
+```bash
+firebase init hosting:github
+```
+
+Setelah credential GitHub ↔ Firebase tersambung, pengelolaan harian tidak perlu dilakukan dari VS Code: perubahan cukup dilakukan di repository dan push ke `main` akan otomatis tayang di Firebase.
+
 ## Hubungkan Apps Script
 
 1. Buka project Apps Script backend yang terhubung dengan spreadsheet investor.
 2. Salin/selaraskan `apps-script/FirebaseBridge.gs` ke project tersebut.
 3. Deploy sebagai **Web app** dan gunakan URL deployment yang berakhiran `/exec`.
 4. Masukkan URL tersebut ke `config.js` pada `appsScriptUrl`.
-5. Pastikan origin GitHub Pages (`https://nrwtkd.github.io`) diizinkan pada bridge.
-
-## GitHub Pages
-
-Repo ini dirancang berjalan langsung dari branch `main`, root `/` tanpa proses build.
-
-Setelah Pages diaktifkan pada **Settings → Pages → Deploy from a branch → main / (root)**, URL publiknya menjadi:
-
-`https://nrwtkd.github.io/misiberbudi/`
+5. Origin Firebase `https://misiberbudi.web.app` sudah diizinkan pada bridge.
 
 ## Prinsip tata kelola
 
