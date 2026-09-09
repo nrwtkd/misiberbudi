@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#12352f">
+  <meta name="description" content="MISI BERBUDI — perjalanan interaktif untuk menyusun profil minat investasi di Kota Serang.">
+  <title>MISI BERBUDI — Serang Investment Journey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="MISI BERBUDI">
+      <span class="brand-mark" aria-hidden="true">MB</span>
+      <span>
+        <strong>MISI BERBUDI</strong>
+        <small data-i18n="brandSub">Serang Investment Journey</small>
+      </span>
+    </a>
+
+    <div class="header-actions">
+      <span class="draft-state" id="draftState" aria-live="polite"></span>
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">
+        <span data-lang-label>ID</span>
+        <span class="toggle-dot" aria-hidden="true"></span>
+        <span>EN</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero shell">
+      <div class="hero-copy">
+        <p class="eyebrow" data-i18n="eyebrow">Kota Serang · Banten · Indonesia</p>
+        <h1 data-i18n="heroTitle">Mulai dari ide. Kami bantu membaca arah investasinya.</h1>
+        <p class="hero-lead" data-i18n="heroLead">Bangun profil minat investasi Anda dalam enam langkah ringan. Bukan formulir panjang—lebih seperti percakapan awal untuk membantu kami memahami kebutuhan proyek Anda.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" type="button" id="startButton" data-i18n="start">Mulai perjalanan</button>
+          <button class="btn btn-ghost" type="button" id="resumeButton" hidden data-i18n="resume">Lanjutkan draft</button>
+        </div>
+        <div class="trust-row">
+          <span><i aria-hidden="true">✓</i><span data-i18n="trust1">± 5 menit</span></span>
+          <span><i aria-hidden="true">✓</i><span data-i18n="trust2">Draft tersimpan otomatis</span></span>
+          <span><i aria-hidden="true">✓</i><span data-i18n="trust3">Tidak perlu akun</span></span>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="city-card city-card-main">
+          <span class="city-pin"></span>
+          <strong>KOTA SERANG</strong>
+          <small>Gateway · Services · MICE</small>
+        </div>
+        <div class="mini-card mini-one"><span>01</span><b>Vision</b></div>
+        <div class="mini-card mini-two"><span>04</span><b>Impact</b></div>
+        <div class="mini-card mini-three"><span>06</span><b>Profile</b></div>
+      </div>
+    </section>
+
+    <section class="journey shell" id="journey" hidden>
+      <aside class="journey-nav" aria-label="Progress">
+        <div class="progress-head">
+          <span data-i18n="yourJourney">Perjalanan Anda</span>
+          <strong id="progressPercent">17%</strong>
+        </div>
+        <div class="progress-track"><span id="progressBar"></span></div>
+        <ol id="stepNav">
+          <li class="active" data-step-nav="1"><span>1</span><div><b data-i18n="step1">Visi</b><small data-i18n="step1sub">Bidang & ide</small></div></li>
+          <li data-step-nav="2"><span>2</span><div><b data-i18n="step2">Arah</b><small data-i18n="step2sub">Jenis investasi</small></div></li>
+          <li data-step-nav="3"><span>3</span><div><b data-i18n="step3">Lokasi</b><small data-i18n="step3sub">Area pilihan</small></div></li>
+          <li data-step-nav="4"><span>4</span><div><b data-i18n="step4">Dampak</b><small data-i18n="step4sub">Nilai & tenaga kerja</small></div></li>
+          <li data-step-nav="5"><span>5</span><div><b data-i18n="step5">Dukungan</b><small data-i18n="step5sub">Fasilitasi</small></div></li>
+          <li data-step-nav="6"><span>6</span><div><b data-i18n="step6">Profil</b><small data-i18n="step6sub">Ringkasan & kontak</small></div></li>
+        </ol>
+      </aside>
+
+      <section class="journey-panel">
+        <form id="investmentForm" novalidate>
+          <div class="step active" data-step="1">
+            <div class="step-kicker"><span>01</span><span data-i18n="checkpoint">Checkpoint</span></div>
+            <h2 data-i18n="visionTitle">Apa yang sedang Anda bayangkan untuk Kota Serang?</h2>
+            <p class="step-intro" data-i18n="visionLead">Pilih bidang yang paling dekat dengan rencana Anda. Tidak harus sempurna—kita mulai dari gambaran besarnya.</p>
+
+            <fieldset>
+              <legend class="sr-only" data-i18n="sectorLegend">Bidang usaha</legend>
+              <div class="choice-grid sector-grid" id="sectorGrid">
+                <label class="choice-card"><input type="radio" name="sector" value="industri"><span class="choice-icon">◫</span><b data-i18n="sectorIndustry">Industri & Manufaktur</b><small data-i18n="sectorIndustrySub">Produksi, pengolahan, pergudangan</small></label>
+                <label class="choice-card"><input type="radio" name="sector" value="perdagangan"><span class="choice-icon">↗</span><b data-i18n="sectorTrade">Perdagangan & Jasa</b><small data-i18n="sectorTradeSub">Retail, jasa profesional, layanan</small></label>
+                <label class="choice-card"><input type="radio" name="sector" value="pariwisata"><span class="choice-icon">✦</span><b data-i18n="sectorTourism">Pariwisata & MICE</b><small data-i18n="sectorTourismSub">Hotel, event, kuliner, destinasi</small></label>
+                <label class="choice-card"><input type="radio" name="sector" value="kreatif"><span class="choice-icon">◎</span><b data-i18n="sectorCreative">Ekonomi Kreatif & Digital</b><small data-i18n="sectorCreativeSub">Teknologi, studio, konten, startup</small></label>
+                <label class="choice-card"><input type="radio" name="sector" value="properti"><span class="choice-icon">⌂</span><b data-i18n="sectorProperty">Properti & Kawasan</b><small data-i18n="sectorPropertySub">Hunian, komersial, mixed-use</small></label>
+                <label class="choice-card"><input type="radio" name="sector" value="pangan"><span class="choice-icon">❋</span><b data-i18n="sectorFood">Pangan & Agro</b><small data-i18n="sectorFoodSub">Pengolahan pangan dan rantai pasok</small></label>
+                <label class="choice-card wide"><input type="radio" name="sector" value="lainnya"><span class="choice-icon">＋</span><b data-i18n="sectorOther">Bidang lainnya</b><small data-i18n="sectorOtherSub">Ceritakan kebutuhan yang belum tercakup</small></label>
+              </div>
+            </fieldset>
+
+            <label class="field-block">
+              <span data-i18n="ideaLabel">Ceritakan ide proyek Anda</span>
+              <textarea name="projectIdea" rows="4" maxlength="800" data-i18n-placeholder="ideaPlaceholder" placeholder="Contoh: pusat kuliner dan ruang event yang terintegrasi dengan area komersial..."></textarea>
+              <small class="field-note"><span data-i18n="optional">Opsional</span> · <span id="ideaCount">0</span>/800</small>
+            </label>
+          </div>
+
+          <div class="step" data-step="2">
+            <div class="step-kicker"><span>02</span><span data-i18n="checkpoint">Checkpoint</span></div>
+            <h2 data-i18n="directionTitle">Ke mana arah rencana investasinya?</h2>
+            <p class="step-intro" data-i18n="directionLead">Ini membantu tim memahami konteks proyek dan jenis dukungan yang mungkin lebih relevan.</p>
+            <div class="choice-grid direction-grid">
+              <label class="choice-card"><input type="radio" name="investmentType" value="baru"><span class="choice-icon">＋</span><b data-i18n="typeNew">Investasi baru</b><small data-i18n="typeNewSub">Memulai proyek atau usaha baru</small></label>
+              <label class="choice-card"><input type="radio" name="investmentType" value="ekspansi"><span class="choice-icon">↗</span><b data-i18n="typeExpansion">Ekspansi</b><small data-i18n="typeExpansionSub">Memperbesar kapasitas atau cabang</small></label>
+              <label class="choice-card"><input type="radio" name="investmentType" value="relokasi"><span class="choice-icon">⇄</span><b data-i18n="typeRelocation">Relokasi</b><small data-i18n="typeRelocationSub">Memindahkan kegiatan usaha</small></label>
+              <label class="choice-card"><input type="radio" name="investmentType" value="kemitraan"><span class="choice-icon">∞</span><b data-i18n="typePartnership">Kemitraan</b><small data-i18n="typePartnershipSub">Mencari mitra atau peluang kolaborasi</small></label>
+            </div>
+            <label class="field-block conditional" id="existingBusinessWrap" hidden>
+              <span data-i18n="existingBusiness">Nama usaha/proyek yang sudah berjalan</span>
+              <input type="text" name="existingBusiness" maxlength="120" autocomplete="organization">
+            </label>
+          </div>
+
+          <div class="step" data-step="3">
+            <div class="step-kicker"><span>03</span><span data-i18n="checkpoint">Checkpoint</span></div>
+            <h2 data-i18n="locationTitle">Lokasi seperti apa yang paling masuk akal?</h2>
+            <p class="step-intro" data-i18n="locationLead">Pilih kecamatan jika sudah punya preferensi. Jika belum, kami bisa mencatat bahwa Anda membutuhkan bantuan pencarian lokasi.</p>
+            <div class="district-stage">
+              <div class="district-map" aria-hidden="true">
+                <span data-district-map="cipocok">Cipocok Jaya</span>
+                <span data-district-map="curug">Curug</span>
+                <span data-district-map="kasemen">Kasemen</span>
+                <span data-district-map="serang">Serang</span>
+                <span data-district-map="taktakan">Taktakan</span>
+                <span data-district-map="walantaka">Walantaka</span>
+              </div>
+              <div class="district-list">
+                <label><input type="radio" name="district" value="Cipocok Jaya"><span>Cipocok Jaya</span></label>
+                <label><input type="radio" name="district" value="Curug"><span>Curug</span></label>
+                <label><input type="radio" name="district" value="Kasemen"><span>Kasemen</span></label>
+                <label><input type="radio" name="district" value="Serang"><span>Serang</span></label>
+                <label><input type="radio" name="district" value="Taktakan"><span>Taktakan</span></label>
+                <label><input type="radio" name="district" value="Walantaka"><span>Walantaka</span></label>
+                <label class="help-location"><input type="radio" name="district" value="Perlu bantuan"><span data-i18n="needLocationHelp">Belum tahu — bantu carikan</span></label>
+              </div>
+            </div>
+            <label class="field-block">
+              <span data-i18n="locationNote">Catatan lokasi</span>
+              <input type="text" name="locationNote" maxlength="240" data-i18n-placeholder="locationPlaceholder" placeholder="Contoh: dekat akses tol, membutuhkan lahan ±2 ha, atau area komersial ramai">
+              <small class="field-note" data-i18n="optional">Opsional</small>
+            </label>
+          </div>
+
+          <div class="step" data-step="4">
+            <div class="step-kicker"><span>04</span><span data-i18n="checkpoint">Checkpoint</span></div>
+            <h2 data-i18n="impactTitle">Seberapa besar dampak yang sedang Anda rancang?</h2>
+            <p class="step-intro" data-i18n="impactLead">Angka awal tidak harus final. Estimasi membantu kami memahami skala proyek sejak awal.</p>
+            <label class="field-block investment-field">
+              <span data-i18n="investmentLabel">Estimasi nilai investasi</span>
+              <div class="money-input"><span>Rp</span><input type="text" inputmode="numeric" name="investmentDisplay" id="investmentDisplay" autocomplete="off" placeholder="0"><input type="hidden" name="investmentValue" id="investmentValue"></div>
+            </label>
+            <div class="quick-values" aria-label="Quick values">
+              <button type="button" data-value="500000000">500 jt</button>
+              <button type="button" data-value="1000000000">1 M</button>
+              <button type="button" data-value="5000000000">5 M</button>
+              <button type="button" data-value="10000000000">10 M</button>
+              <button type="button" data-value="50000000000">50 M</button>
+            </div>
+
+            <div class="range-card">
+              <div class="range-head"><span data-i18n="jobsLabel">Potensi tenaga kerja</span><strong><span id="jobsValue">25</span> <span data-i18n="people">orang</span></strong></div>
+              <input type="range" name="jobs" id="jobsRange" min="0" max="500" step="5" value="25">
+              <div class="range-scale"><span>0</span><span>100</span><span>250</span><span>500+</span></div>
+            </div>
+          </div>
+
+          <div class="step" data-step="5">
+            <div class="step-kicker"><span>05</span><span data-i18n="checkpoint">Checkpoint</span></div>
+            <h2 data-i18n="supportTitle">Apa yang paling membantu proyek ini bergerak?</h2>
+            <p class="step-intro" data-i18n="supportLead">Pilih lebih dari satu bila perlu. Jawaban ini tidak memengaruhi penilaian layanan—ini membantu kami menyiapkan percakapan yang lebih tepat.</p>
+            <fieldset>
+              <legend data-i18n="supportLegend">Dukungan yang dibutuhkan</legend>
+              <div class="check-grid">
+                <label><input type="checkbox" name="support" value="Informasi perizinan"><span data-i18n="supportPermit">Informasi perizinan</span></label>
+                <label><input type="checkbox" name="support" value="Pencarian lokasi"><span data-i18n="supportLocation">Pencarian lokasi</span></label>
+                <label><input type="checkbox" name="support" value="Data peluang investasi"><span data-i18n="supportData">Data peluang investasi</span></label>
+                <label><input type="checkbox" name="support" value="Kemitraan"><span data-i18n="supportPartner">Akses kemitraan</span></label>
+                <label><input type="checkbox" name="support" value="Koordinasi lintas instansi"><span data-i18n="supportCoordination">Koordinasi lintas instansi</span></label>
+                <label><input type="checkbox" name="support" value="Konsultasi proyek"><span data-i18n="supportConsult">Konsultasi rencana proyek</span></label>
+              </div>
+            </fieldset>
+            <label class="field-block">
+              <span data-i18n="obstacleLabel">Kendala atau pertanyaan utama</span>
+              <textarea name="obstacle" rows="4" maxlength="600" data-i18n-placeholder="obstaclePlaceholder" placeholder="Apa yang saat ini paling menghambat atau masih ingin Anda pastikan?"></textarea>
+              <small class="field-note" data-i18n="optional">Opsional</small>
+            </label>
+          </div>
+
+          <div class="step" data-step="6">
+            <div class="step-kicker"><span>06</span><span data-i18n="checkpoint">Checkpoint</span></div>
+            <h2 data-i18n="profileTitle">Profil investasi Anda sudah terbentuk.</h2>
+            <p class="step-intro" data-i18n="profileLead">Periksa ringkasannya, lalu beri kami cara terbaik untuk menghubungi Anda.</p>
+
+            <section class="profile-preview" id="profilePreview" aria-live="polite"></section>
+
+            <div class="contact-grid">
+              <label class="field-block"><span data-i18n="nameLabel">Nama lengkap</span><input type="text" name="fullName" autocomplete="name" maxlength="120" required></label>
+              <label class="field-block"><span data-i18n="companyLabel">Perusahaan/organisasi</span><input type="text" name="company" autocomplete="organization" maxlength="160"></label>
+              <label class="field-block"><span data-i18n="emailLabel">Email</span><input type="email" name="email" autocomplete="email" maxlength="160" required></label>
+              <label class="field-block"><span data-i18n="phoneLabel">WhatsApp/telepon</span><input type="tel" name="phone" autocomplete="tel" maxlength="40" required></label>
+            </div>
+
+            <label class="consent"><input type="checkbox" name="consent" value="yes" required><span data-i18n="consentText">Saya menyetujui data ini digunakan untuk tindak lanjut fasilitasi investasi oleh petugas yang berwenang.</span></label>
+            <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+          </div>
+
+          <div class="form-alert" id="formAlert" role="alert" aria-live="assertive" hidden></div>
+
+          <div class="step-actions">
+            <button class="btn btn-ghost" type="button" id="backButton" disabled data-i18n="back">Kembali</button>
+            <button class="btn btn-primary" type="button" id="nextButton"><span data-i18n="continue">Lanjutkan</span><span aria-hidden="true">→</span></button>
+            <button class="btn btn-primary submit-btn" type="submit" id="submitButton" hidden><span class="submit-label" data-i18n="submit">Kirim profil</span><span class="spinner" aria-hidden="true"></span></button>
+          </div>
+        </form>
+      </section>
+    </section>
+
+    <section class="success shell" id="successPanel" hidden>
+      <div class="success-card">
+        <div class="success-icon" aria-hidden="true">✓</div>
+        <p class="eyebrow" data-i18n="received">Profil diterima</p>
+        <h2 data-i18n="successTitle">Terima kasih. Percakapan investasinya bisa dimulai dari sini.</h2>
+        <p data-i18n="successLead">Profil Anda sudah tercatat. Simpan nomor referensi ini untuk memudahkan tindak lanjut.</p>
+        <div class="reference-box"><span data-i18n="reference">Nomor referensi</span><strong id="referenceNumber">—</strong></div>
+        <button class="btn btn-ghost" type="button" id="newProfileButton" data-i18n="newProfile">Buat profil baru</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer shell">
+    <div><strong>MISI BERBUDI</strong><span data-i18n="footerTag">Serang Investment Journey</span></div>
+    <p data-i18n="footerNote">Profil awal ini digunakan sebagai bahan fasilitasi dan bukan merupakan persetujuan perizinan atau komitmen investasi.</p>
+  </footer>
+
+  <div class="submit-overlay" id="submitOverlay" hidden>
+    <div class="submit-modal" role="dialog" aria-modal="true" aria-labelledby="submitStatusTitle">
+      <div class="pulse-loader" aria-hidden="true"><span></span><span></span><span></span></div>
+      <h3 id="submitStatusTitle" data-i18n="sendingTitle">Mengirim profil Anda…</h3>
+      <p id="submitStatusText" data-i18n="sendingText">Jangan tutup halaman ini. Kami sedang menunggu konfirmasi dari sistem.</p>
+      <div class="submit-time" id="submitTimer">00:00</div>
+      <div class="timeout-actions" id="timeoutActions" hidden>
+        <button class="btn btn-primary" type="button" id="retryButton" data-i18n="retry">Coba konfirmasi lagi</button>
+        <button class="btn btn-ghost" type="button" id="closeSubmitOverlay" data-i18n="keepDraft">Tutup, simpan draft</button>
+      </div>
+    </div>
+  </div>
+
+  <iframe name="submitTarget" id="submitTarget" class="submit-frame" title="Submission response"></iframe>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
